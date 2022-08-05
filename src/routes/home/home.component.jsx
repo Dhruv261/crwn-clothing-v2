@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import Categories from '../directory/categories-component';
+
+import Categories from '../../components/directory/categories-component';
 
 const Home = () => {
   const categories = [
