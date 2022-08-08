@@ -1,7 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { getRedirectResult } from 'firebase/auth';
 import Button from '../button/button.component';
 import FormInput from '../form-input/form-input.component';
+
+import { UserContext } from '../../contexts/user.context';
+
 
 import './sign-in-form.styles.scss';
 
@@ -21,19 +24,21 @@ const SignInForm = () => {
   const [formFields, setFormField] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await getRedirectResult(auth);
-      if (response) {
-        const userDocRef = await createUserDocumentFromAuth(response.user);
-      }
-    }
-    fetchData();
-  }, []);
+  // const { setCurrentUser } = useContext(UserContext);
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await getRedirectResult(auth);
+  //     if (response) {
+  //       const userDocRef = await createUserDocumentFromAuth(response.user);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
 
   const logGoogleUser = async () => {
     const { user } = await singInWithGooglePopup();
-    const userDocRef = await createUserDocumentFromAuth(user);
+    // const userDocRef = await createUserDocumentFromAuth(user);
   };
 
   const clickHandler = (event) => {
@@ -49,11 +54,11 @@ const SignInForm = () => {
     event.preventDefault();
     console.log('logInweap');
     try {
-      const response = await singInAuthUserWithEmailAndPassword(
+      const { user } = await singInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
+      // setCurrentUser(user);
       // signUserInWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
