@@ -60,7 +60,7 @@ export const addCollectionAndDocuments = async (
   });
 
   await batch.commit();
-  console.log('batch finish');
+
 };
 
 export const getCategoriesAndDocuments = async () => {
@@ -74,7 +74,7 @@ export const getCategoriesAndDocuments = async () => {
     acc[title.toLowerCase()] = items;
     return acc;
   }, {});
-  console.log('categoryMap from firebase.utils.js: ', categoryMap )
+
   return categoryMap;
 };
 
@@ -85,12 +85,11 @@ export const createUserDocumentFromAuth = async (
   if (!userAuth) return;
 
   const userDocRef = doc(db, 'user', userAuth.uid);
-  console.log(userDocRef);
+
   const userSnapshot = await getDoc(userDocRef);
 
-  console.log('userSnapshot', userSnapshot);
 
-  console.log('userSnapshot.exists()', userSnapshot.exists());
+
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
@@ -105,7 +104,7 @@ export const createUserDocumentFromAuth = async (
         ...additionalInformation,
       });
     } catch (error) {
-      console.log(`Error creating user ${error}`);
+
     }
   }
 
@@ -117,7 +116,7 @@ export const createUserDocumentFromAuth = async (
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
-  console.log('auth from firebase.js: ', auth);
+
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 

@@ -52,7 +52,7 @@ const SignInForm = () => {
 
   const logInweap = async (event) => {
     event.preventDefault();
-    console.log('logInweap');
+
     try {
       const { user } = await singInAuthUserWithEmailAndPassword(
         email,

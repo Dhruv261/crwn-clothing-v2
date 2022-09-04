@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 const addCartItem = (cartItems, productToAdd) => {
-  console.log(cartItems);
+
   // find if cart items contains product to add
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
@@ -33,7 +33,7 @@ const deleteCartItem = (cartItems, deleteProductFromCart) => {
 };
 
 const removeCartItem = (cartItems, cartItemToRemove) => {
-  console.log(`cartItemToRemove: ${cartItemToRemove}`);
+
   // find the cart item to remove
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToRemove.id
@@ -94,7 +94,7 @@ export const CartProvider = ({ children }) => {
     setCartItems(deleteCartItem(cartItems, itemToDelete));
   };
 
-  console.log(`totalQuantity ${totalQuantity}`);
+
 
   // input is taken from product-card.component
   // further we are also inputting products
@@ -117,7 +117,7 @@ export const CartProvider = ({ children }) => {
     deleteItemFromCart,
     totalPrice,
   };
-  // console.log(`cartItems ${cartItems}`);
+  // `cartItems ${cartItems}`);
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
 

@@ -19,13 +19,13 @@ export const CategoriesProvider = ({ children }) => {
     const getCategoriesMap = async () => {
 
       const categoryMap = await getCategoriesAndDocuments();
-      // console.log(categoryMap);
+      // categoryMap);
       setCategoriesMap(categoryMap);
     }
     getCategoriesMap();
   },[])
   const value = { categoriesMap };
-  console.log('categoriesMap from categories.context.jsx : ', categoriesMap)
+
   return (
     <CategoriesContext.Provider value={value}>
       {children}

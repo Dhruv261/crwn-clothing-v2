@@ -13,8 +13,7 @@ const CartDropdown = () => {
     navigate('/checkout');
   };
 
-  console.log(`CartItems from cart-dropdown.component:
-  ${cartItems}`);
+
   return (
     <div className='cart-dropdown-container'>
       <div className='cart-items'>
